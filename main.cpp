@@ -2,6 +2,7 @@
 #include <memory>
 
 
+// полёт
 class FlyBehavior {
 public:
     virtual void fly() const = 0;
@@ -22,6 +23,7 @@ public:
     }
 };
 
+// крякание
 class QuackBehavior {
 public:
     virtual void quack() const = 0;
@@ -49,12 +51,14 @@ public:
     }
 };
 
+// класс утки
 class Duck {
 public:
     std::unique_ptr<FlyBehavior> flyBehavior; // unique_ptr - это умный указатель, который работает с некоторым
     std::unique_ptr<QuackBehavior> quackBehavior; // объектом этого класса, т.е. мы можем в конструкторе
     // присвоить наследника Behavior (в наследниках) и не переопределять методы performQuack() и performFly().
-
+    // то есть это всё для того, чтобы не создавать объекты классов вручную, но при этом менять поведение
+    // классов-наследников (например, у MallardDuck будет FlyWithWings и Quack вместо FlyBehavior и QuackBehavior)
     Duck(std::unique_ptr<FlyBehavior> flyBehavior, std::unique_ptr<QuackBehavior> quackBehavior)
     : flyBehavior(std::move(flyBehavior)), quackBehavior(std::move(quackBehavior)) {}
     void swim() {
@@ -75,6 +79,9 @@ public:
     }
 };
 
+// make_unique - возвращает unique_ptr передаваемого класса/типа данных
+
+// утки
 class MallardDuck : public Duck {
 public:
     MallardDuck() : Duck(std::make_unique<FlyWithWings>(), std::make_unique<Quack>()) {}
