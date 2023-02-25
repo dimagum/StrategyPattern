@@ -123,21 +123,25 @@ int main() {
     MallardDuck mallardDuck;
     mallardDuck.display();
     mallardDuck.performFly();
+    mallardDuck.performQuack();
     mallardDuck.swim();
 
     RedheadDuck redheadDuck;
     redheadDuck.display();
     redheadDuck.performFly();
+    redheadDuck.performQuack();
     redheadDuck.swim();
 
     RubberDuck rubberDuck;
     rubberDuck.display();
     rubberDuck.performFly();
+    rubberDuck.performQuack();
     rubberDuck.swim();
 
     DecoyDuck decoyDuck;
     decoyDuck.display();
     decoyDuck.performFly();
+    decoyDuck.performQuack();
     decoyDuck.swim();
 
 
